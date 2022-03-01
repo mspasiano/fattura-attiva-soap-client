@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://contab.cnr.it/sigla" name="FatturaAttivaComponentWS" targetNamespace="http://contab.cnr.it/sigla">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://contab.cnr.it/sigla" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://contab.cnr.it/sigla">
+            <xs:element name="InserimentoFattura" type="tns:InserimentoFattura"/>
+            <xs:element name="InserimentoFatturaResponse" type="tns:InserimentoFatturaResponse"/>
+            <xs:element name="InserimentoFatture" type="tns:InserimentoFatture"/>
+            <xs:element name="InserimentoFattureResponse" type="tns:InserimentoFattureResponse"/>
+            <xs:element name="RicercaFattura" type="tns:RicercaFattura"/>
+            <xs:element name="RicercaFatturaResponse" type="tns:RicercaFatturaResponse"/>
+            <xs:complexType name="InserimentoFatture">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="fatturaAttiva" type="tns:fatturaAttiva"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="fatturaAttiva">
+                <xs:sequence>
+                    <xs:element name="cambio" type="xs:decimal"/>
+                    <xs:element name="cd_cds_origine" type="xs:string"/>
+                    <xs:element name="cd_divisa" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cd_modalita_pag" type="xs:string"/>
+                    <xs:element name="cd_modalita_pag_uo_cds" type="xs:string"/>
+                    <xs:element name="cd_terzo" type="xs:int"/>
+                    <xs:element name="cd_terzo_uo_cds" type="xs:int"/>
+                    <xs:element name="cd_tipo_sezionale" type="xs:string"/>
+                    <xs:element name="cd_uo_origine" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cod_errore" type="xs:string"/>
+                    <xs:element minOccurs="0" name="desc_errore" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ds_fattura_attiva" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dt_protocollo" type="xs:dateTime"/>
+                    <xs:element name="dt_registrazione" type="xs:dateTime"/>
+                    <xs:element name="esercizio" type="xs:int"/>
+                    <xs:element name="fl_extra_ue" type="xs:boolean"/>
+                    <xs:element name="fl_intra_ue" type="xs:boolean"/>
+                    <xs:element name="fl_liquidazione_differita" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="fl_pagamento_anticipato" type="xs:string"/>
+                    <xs:element name="fl_san_marino" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="im_totale_imponibile" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="im_totale_iva" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="note" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nr_protocollo_iva" type="xs:long"/>
+                    <xs:element minOccurs="0" name="numeroFattura" type="xs:string"/>
+                    <xs:element minOccurs="0" name="pg_banca" type="xs:long"/>
+                    <xs:element name="pg_banca_uo_cds" type="xs:long"/>
+                    <xs:element minOccurs="0" name="pg_fattura_attiva" type="xs:long"/>
+                    <xs:element name="pg_fattura_esterno" type="xs:long"/>
+                    <xs:element minOccurs="0" name="rif_ordine" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="righeIntra" nillable="true" type="tns:fatturaAttivaIntra"/>
+                    <xs:element maxOccurs="unbounded" name="righefat" type="tns:fatturaAttivaRiga"/>
+                    <xs:element minOccurs="0" name="ti_bene_servizio" type="xs:string"/>
+                    <xs:element name="ti_causale_emissione" type="xs:string"/>
+                    <xs:element name="ti_fattura" type="xs:string"/>
+                    <xs:element name="utcr" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="fatturaAttivaIntra">
+                <xs:sequence>
+                    <xs:element name="ammontare_euro" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="cd_consegna" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cd_provincia" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cd_trasporto" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cod_erogazione" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cod_incasso" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id_cpa" type="xs:long"/>
+                    <xs:element minOccurs="0" name="id_natura_transazione" type="xs:long"/>
+                    <xs:element minOccurs="0" name="id_nomenclatura_combinata" type="xs:long"/>
+                    <xs:element minOccurs="0" name="massa" type="xs:decimal"/>
+                    <xs:element name="pg_nazione" type="xs:long"/>
+                    <xs:element minOccurs="0" name="unita_supplementari" type="xs:long"/>
+                    <xs:element minOccurs="0" name="valore_statistico" type="xs:decimal"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="fatturaAttivaRiga">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="cd_bene_servizio" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cd_tariffario" type="xs:string"/>
+                    <xs:element name="cd_voce" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cd_voce_iva" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ds_accertamento" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ds_obbligazione" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ds_riga_fattura" type="xs:string"/>
+                    <xs:element name="dt_scadenza" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="esercizio_assncna_fin" type="xs:int"/>
+                    <xs:element minOccurs="0" name="esercizio_contratto" type="xs:int"/>
+                    <xs:element name="fl_iva_forzata" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="im_iva" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="motivazione" type="xs:string"/>
+                    <xs:element minOccurs="0" name="pg_accertamento" type="xs:long"/>
+                    <xs:element minOccurs="0" name="pg_accertamento_scadenzario" type="xs:long"/>
+                    <xs:element minOccurs="0" name="pg_contratto" type="xs:long"/>
+                    <xs:element minOccurs="0" name="pg_fattura_assncna_fin" type="xs:long"/>
+                    <xs:element minOccurs="0" name="pg_obbligazione" type="xs:long"/>
+                    <xs:element minOccurs="0" name="pg_obbligazione_scadenzario" type="xs:long"/>
+                    <xs:element minOccurs="0" name="pg_riga_assncna_fin" type="xs:long"/>
+                    <xs:element minOccurs="0" name="prezzo_unitario" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="progressivo_riga" type="xs:long"/>
+                    <xs:element minOccurs="0" name="quantita" type="xs:decimal"/>
+                    <xs:element maxOccurs="unbounded" name="righescadvoc" type="tns:fatturaAttivaScad"/>
+                    <xs:element minOccurs="0" name="stato_contratto" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="fatturaAttivaScad">
+                <xs:sequence>
+                    <xs:element name="cdr" type="xs:string"/>
+                    <xs:element name="gae" type="xs:string"/>
+                    <xs:element name="im_voce" type="xs:decimal"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InserimentoFattureResponse">
+                <xs:sequence>
+                    <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="result" type="tns:fatturaAttiva"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RicercaFattura">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="user" type="xs:string"/>
+                    <xs:element minOccurs="0" name="esercizio" type="xs:long"/>
+                    <xs:element minOccurs="0" name="cds" type="xs:string"/>
+                    <xs:element minOccurs="0" name="uo" type="xs:string"/>
+                    <xs:element minOccurs="0" name="pg" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RicercaFatturaResponse">
+                <xs:sequence>
+                    <xs:element form="qualified" minOccurs="0" name="result" type="tns:fatturaAttiva"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InserimentoFattura">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="fatturaAttiva" type="tns:fatturaAttiva"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InserimentoFatturaResponse">
+                <xs:sequence>
+                    <xs:element form="qualified" minOccurs="0" name="result" type="tns:fatturaAttiva"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="fatturaAttivaException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="cod_errore" type="xs:string"/>
+                    <xs:element minOccurs="0" name="desc_errore" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="FatturaAttivaException" nillable="true" type="tns:fatturaAttivaException"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="InserimentoFatture">
+        <wsdl:part element="ns1:InserimentoFatture" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RicercaFatturaResponse">
+        <wsdl:part element="ns1:RicercaFatturaResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="InserimentoFattureResponse">
+        <wsdl:part element="ns1:InserimentoFattureResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="InserimentoFatturaResponse">
+        <wsdl:part element="ns1:InserimentoFatturaResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="FatturaAttivaException_Exception">
+        <wsdl:part element="ns1:FatturaAttivaException" name="FatturaAttivaException_Exception">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RicercaFattura">
+        <wsdl:part element="ns1:RicercaFattura" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="InserimentoFattura">
+        <wsdl:part element="ns1:InserimentoFattura" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="FatturaAttivaComponentWS">
+        <wsdl:operation name="InserimentoFatture">
+            <wsdl:input message="ns1:InserimentoFatture" name="InserimentoFatture">
+            </wsdl:input>
+            <wsdl:output message="ns1:InserimentoFattureResponse" name="InserimentoFattureResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RicercaFattura">
+            <wsdl:input message="ns1:RicercaFattura" name="RicercaFattura">
+            </wsdl:input>
+            <wsdl:output message="ns1:RicercaFatturaResponse" name="RicercaFatturaResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="InserimentoFattura">
+            <wsdl:input message="ns1:InserimentoFattura" name="InserimentoFattura">
+            </wsdl:input>
+            <wsdl:output message="ns1:InserimentoFatturaResponse" name="InserimentoFatturaResponse">
+            </wsdl:output>
+            <wsdl:fault message="ns1:FatturaAttivaException_Exception" name="FatturaAttivaException_Exception">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

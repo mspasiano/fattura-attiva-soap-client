@@ -1,0 +1,5 @@
+client:
+  ws:
+    address: http://sigla-main-sso.test.si.cnr.it/SIGLA/FatturaAttivaComponentWS
+    user-name: app.iit
+    password: secret
